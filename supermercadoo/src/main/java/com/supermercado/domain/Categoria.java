@@ -15,14 +15,14 @@ public class Categoria implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_categoria")
-    private Long idCategoria;
+    private long idCategoria;
     private String descripcion;
     private String rutaImagen;
     private boolean activo;
 
     @OneToMany//Relacion de uno a muchos
     @JoinColumn(name = "id_categoria")
-    List<Producto> productos;
+    private List<Producto> productos;
 
     public Categoria() {
     }
