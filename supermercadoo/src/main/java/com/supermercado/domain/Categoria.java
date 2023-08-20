@@ -1,4 +1,4 @@
-package com.supermercado.domain;
+package com.IsariSupermercado.domain;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
