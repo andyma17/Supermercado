@@ -1,8 +1,8 @@
-package com.supermercado.controller;
+package com.IsariSupermercado.controller;
 
-import com.supermercado.domain.Categoria;
-import com.supermercado.service.CategoriaService;
-import com.supermercado.service.impl.FirebaseStorageServiceImpl;
+import com.IsariSupermercado.domain.Categoria;
+import com.IsariSupermercado.service.CategoriaService;
+import com.IsariSupermercado.service.impl.FirebaseStorageServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+
+
 @Controller
 @Slf4j
 @RequestMapping("/categoria")//busca esta ruta
 public class CategoriaController {
-
-    @Autowired
+    
+ @Autowired
     private CategoriaService categoriaService;
 
     @GetMapping("/listado")//busca esta ruta se trae informacion 

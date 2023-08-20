@@ -1,17 +1,20 @@
-package com.supermercado.controller;
 
-import com.supermercado.domain.Categoria;
-import com.supermercado.domain.Producto;
-import com.supermercado.service.CategoriaService;
-import com.supermercado.service.FirebaseStorageService;
-import com.supermercado.service.impl.FirebaseStorageServiceImpl;
+package com.IsariSupermercado.controller;
+
+/**
+ *
+ * @author Usuario
+ */
+import com.IsariSupermercado.domain.Producto;
+import com.IsariSupermercado.service.CategoriaService;
+import com.IsariSupermercado.service.ProductoService;
+import com.IsariSupermercado.service.FirebaseStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import com.supermercado.service.ProductoService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
