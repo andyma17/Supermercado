@@ -1,6 +1,6 @@
-package com.supermercado.service;
+package com.IsariSupermercado.service;
 
-import com.supermercado.domain.Categoria;
+import com.IsariSupermercado.domain.Categoria;
 import java.util.List;
 
 public interface CategoriaService {

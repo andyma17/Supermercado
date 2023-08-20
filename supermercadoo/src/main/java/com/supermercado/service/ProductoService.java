@@ -1,10 +1,16 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ */
+package com.IsariSupermercado.service;
 
-package com.supermercado.service;
-
-import com.supermercado.domain.Producto;
+import com.IsariSupermercado.domain.Producto;
 import java.util.List;
 
-
+/**
+ *
+ * @author Usuario
+ */
 public interface ProductoService {
 
     // Se obtiene un listado de categorias en un List
