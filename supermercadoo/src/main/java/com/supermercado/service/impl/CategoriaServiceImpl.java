@@ -1,8 +1,8 @@
-package com.supermercado.service.impl;
+package com.IsariSupermercado.service.impl;
 
-import com.supermercado.dao.CategoriaDao;
-import com.supermercado.domain.Categoria;
-import com.supermercado.service.CategoriaService;
+import com.IsariSupermercado.dao.CategoriaDao;
+import com.IsariSupermercado.domain.Categoria;
+import com.IsariSupermercado.service.CategoriaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,5 +40,6 @@ public class CategoriaServiceImpl implements CategoriaService {
     public void delete(Categoria categoria){//alimina
         categoriaDao.delete(categoria);
     }
+    
     
 }

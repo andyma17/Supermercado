@@ -1,14 +1,21 @@
-package com.supermercado.service.impl;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.IsariSupermercado.service.impl;
 
-import com.supermercado.dao.ProductoDao;
-import com.supermercado.domain.Producto;
-import com.supermercado.service.ProductoService;
+import com.IsariSupermercado.dao.ProductoDao;
+import com.IsariSupermercado.domain.Producto;
+import com.IsariSupermercado.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ *
+ * @author Usuario
+ */
 @Service
 public class ProductoServiceImpl implements ProductoService {
 
@@ -39,22 +46,24 @@ public class ProductoServiceImpl implements ProductoService {
     public void delete(Producto producto) {
         productoDao.delete(producto);
     }
+    // Lista de productos con precio entre ordendados por descripción ConsultaAmpliada
 
     @Override
+    @Transactional(readOnly = true)
     public List<Producto> findByPrecioBetweenOrderByDescripcion(double precioInf, double precioSup) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return productoDao.findByPrecioBetweenOrderByDescripcion(precioInf, precioSup);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Producto> metodoJPQL(double precioInf, double precioSup) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return productoDao.metodoJPQL(precioInf, precioSup);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Producto> metodoNativo(double precioInf, double precioSup) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return productoDao.metodoNativo(precioInf, precioSup);
     }
-}
-    }
-}
 
+}
