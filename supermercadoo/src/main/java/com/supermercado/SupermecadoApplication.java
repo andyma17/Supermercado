@@ -1,13 +1,15 @@
-package com.supermercado;
+
+package com.IsariSupermercado;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SupermecadoApplication {
+public class IsariSupermercadoApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SupermecadoApplication.class, args);
+
+   public static void main(String[] args) {
+		SpringApplication.run(IsariSupermercadoApplication.class, args);
 	}
-
+    
 }
