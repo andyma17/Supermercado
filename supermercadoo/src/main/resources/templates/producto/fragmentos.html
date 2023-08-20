@@ -3,12 +3,12 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{layout/plantilla :: head}">
-        <title>Isari</title>
+        <title>IsariSupermercado</title>
     </head>
     <body>
         <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
         <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
-            <div class="container">
+            <div class="container"sec:authorize="hasRole('ROLE_ADMIN')">
                 <div class="row">
                     <div class="col-md-3">   
                         <button 
@@ -89,101 +89,8 @@
                 </div>
             </div>
         </section>
-
-  
-         <!--  Sección para crear los filtros desde aqui se navega al controlador a buscar la ruta -->
-        <section th:fragment="filtros" class="bg-light">
-            <div class="row py-2">
-                <div class="col-md-1"></div>
-                <div class="col-md-3">
-                    <form method="POST" th:action="@{/producto/query1}" 
-                          class="was-validated">
-                        <div class="card">                            
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <label for="precioInf">[[#{producto.precio.inferior}]]</label>
-                                    <input type="number" class="form-control" 
-                                           th:value="${precioInf}"
-                                           th:name="precioInf" required="true"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="precioSup">[[#{producto.precio.superior}]]</label>
-                                    <input type="number" class="form-control" 
-                                           th:value="${precioSup}"
-                                           th:name="precioSup" required="true"/>
-                                </div>
-                            </div>
-                            <div class="card-footer text-center">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-check"></i> [[#{producto.ampliadas}]]
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>   
-
-
-                <div class="col-md-3">
-                    <form method="POST" th:action="@{/producto/query2}" 
-                          class="was-validated">
-                        <div class="card">                            
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <label for="precioInf">[[#{producto.precio.inferior}]]</label>
-                                    <input type="number" class="form-control" 
-                                           th:value="${precioInf}"
-                                           th:name="precioInf" required="true"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="precioSup">[[#{producto.precio.superior}]]</label>
-                                    <input type="number" class="form-control" 
-                                           th:value="${precioSup}"
-                                           th:name="precioSup" required="true"/>
-                                </div>
-                            </div>
-                            <div class="card-footer text-center">
-                                <button type="submit" class="btn btn-info">
-                                    <i class="fas fa-check"></i> [[#{producto.jpql}]]
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-
-                <div class="col-md-3">
-                    <form method="POST" th:action="@{/producto/query3}" 
-                          class="was-validated">
-                        <div class="card success">
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <label for="precioInf">[[#{producto.precio.inferior}]]</label>
-                                    <input type="number" class="form-control" 
-                                           th:value="${precioInf}"
-                                           th:name="precioInf" required="true"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="precioSup">[[#{producto.precio.superior}]]</label>
-                                    <input type="number" class="form-control" 
-                                           th:value="${precioSup}"
-                                           th:name="precioSup" required="true"/>
-                                </div>
-                            </div>
-                            <div class="card-footer text-center">
-                                <button type="submit" class="btn btn-warning">
-                                    <i class="fas fa-check"></i> [[#{producto.nativo}]]
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-
-        </section>
-          
-        <!-- 3 Sección principal para mostrar la informaccion de la entidad producto -->
-        <section th:fragment="listadoProductos" id="productos">
+<!-- 3 Sección principal para mostrar la informaccion de la entidad producto -->
+       <section th:fragment="listadoProductos" id="productos">
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
@@ -212,11 +119,12 @@
                                             <td>[[${producto.precio*producto.existencias}]]</td>
                                             <td th:text="${producto.activo} ? 'Activa' : 'Inactiva'" />
                                             <td>[[${producto.categoria.descripcion}]]</td>
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')"></td>
                                             <td><a th:href="@{/producto/eliminar/}+${producto.idProducto}"
                                                    class="btn btn-danger">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
                                                 <a th:href="@{/producto/modificar/}+${producto.idProducto}"
-                                                   class="btn btn-success">
+                                                   class="btn btn-dark">
                                                     <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a></td></tr>
                                     </tbody>
                                 </table>
@@ -227,7 +135,7 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="card text-center bg-success text-black mb-3">
+                        <div class="card text-center bg-dark text-white mb-3">
                             <div class="card-body">
                                 <h3>[[#{producto.total}]]</h3>
                                 <h4 class="fs-2"><i class="fas fa-users"></i> [[${totalProductos}]]</h4>
@@ -237,6 +145,7 @@
                 </div>
             </div>
         </section>
+
 
         <!-- 4 Fragmento que se utiliza en la página modifca.html -->
        <section th:fragment="editarProducto">
@@ -338,7 +247,7 @@
                         </a>
                     </div>
                     <div class="col-md-4 d-grid">
-                        <button type="submit" class="btn btn-success">
+                        <button type="submit" class="btn btn-dark">
                             <i class="fas fa-check"></i> [[#{accion.guardar}]]
                         </button>
                     </div>
